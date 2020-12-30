@@ -146,8 +146,57 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     ),
 };
 
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     return update_tri_layer_state(state, _NAV, _SYMBOLS, _FUNC);
+// }
+
+const rgblight_segment_t PROGMEM symbols_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 2, HSV_GOLD},
+    {3, 1, HSV_GOLD},
+    {5, 1, HSV_GOLD},
+    {7, 1, HSV_GOLD},
+    {9, 1, HSV_GOLD},
+    {10, 1, HSV_GOLD},
+    {12, 1, HSV_GOLD},
+    {14, 1, HSV_GOLD},
+    {16, 1, HSV_GOLD},
+    {18, 2, HSV_GOLD}
+);
+
+const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 1, HSV_MAGENTA},
+    {2, 1, HSV_MAGENTA},
+    {4, 1, HSV_MAGENTA},
+    {6, 1, HSV_MAGENTA},
+    {8, 2, HSV_MAGENTA},
+    {10, 2, HSV_MAGENTA},
+    {13, 1, HSV_MAGENTA},
+    {15, 1, HSV_MAGENTA},
+    {17, 1, HSV_MAGENTA},
+    {19, 1, HSV_MAGENTA}
+);
+
+const rgblight_segment_t PROGMEM func_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {8, 2, HSV_RED}
+);
+
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+    symbols_layer,
+    nav_layer,
+    func_layer
+);
+
+void keyboard_post_init_user(void) {
+    // Enable the LED layers
+    rgblight_layers = my_rgb_layers;
+}
+
 layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _NUMNAV, _SYMBOLS, _ADJUST);
+    // Both layers will light up if both kb layers are active
+    rgblight_set_layer_state(0, layer_state_cmp(state, 1));
+    rgblight_set_layer_state(1, layer_state_cmp(state, 2));
+    rgblight_set_layer_state(2, layer_state_cmp(state, 3));
+    return state;
 }
 
 #ifdef OLED_DRIVER_ENABLE

@@ -21,11 +21,18 @@
 #endif
 
 #ifdef RGBLIGHT_ENABLE
-  #define RGBLIGHT_ANIMATIONS
-  #define RGBLIGHT_HUE_STEP 8
-  #define RGBLIGHT_SAT_STEP 8
-  #define RGBLIGHT_VAL_STEP 8
-  #define RGBLIGHT_LIMIT_VAL 150
+  #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+  #define RGBLIGHT_EFFECT_TWINKLE
+  #define RGBLIGHT_EFFECT_KNIGHT
+  #define RGBLIGHT_HUE_STEP 16
+  #define RGBLIGHT_SAT_STEP 16
+  #define RGBLIGHT_VAL_STEP 16
+  #define RGBLIGHT_LIMIT_VAL 191
+  #define RGBLIGHT_LAYERS
+  #define RGBLIGHT_SLEEP
+  #define RGBLIGHT_SPLIT
+  #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
+  #define RGBLIGHT_LED_MAP { 10, 11, 13, 12, 14, 17, 15, 16, 19, 1, 9, 8, 6, 7, 5, 2, 4, 3, 1, 0 }
 #endif
 
 // If you are using an Elite C rev3 on the slave side, uncomment the lines below:
