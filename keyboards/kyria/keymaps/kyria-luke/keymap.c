@@ -17,9 +17,9 @@
 
 enum layers {
     _QWERTY = 0,
-    _NUMNAV,
     _SYMBOLS,
-    _ADJUST
+    _NAV,
+    _FUNC
 };
 
 bool is_alt_tab_active = false;
@@ -38,75 +38,75 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├───────┼─────┼─────┼─────┼─────┼─────┤                           ├─────┼─────┼─────┼─────┼─────┼─────┤
  * │ ^/Esc │  A  │  S  │  D  │  F  │  G  │                           │  H  │  J  │  K  │  L  │ ; : │ ' " │
  * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐   ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
- * │  Alt  │  Z  │  X  │  C  │  V  │  B  │ GUI │     │   │Adjst│     │  N  │  M  │ , < │ . > │ / ? │ = + │
+ * │  Alt  │  Z  │  X  │  C  │  V  │  B  │ GUI │     │   │     │     │  N  │  M  │ , < │ . > │ / ? │ = + │
  * └───────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤   ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴─────┘
- *                │ Sleep│ Tab  │ Space│ Bksp │ Ctrl │   │ Enter│ Space│ Bksp │ Tab  │      │
- *                │      │ NmNv │ Symb │ Shift│ Del  │   │      │ Shift│ NmNv │ Symb │      │
+ *                │ Sleep│ Tab  │ Space│ Bksp │ Del  │   │ Enter│ Space│ Bksp │ Tab  │      │
+ *                │      │ Ctrl │ SYMB │ Shift│ NAV  │   │ NAV  │ Shift│ SYMB │ FUNC │      │
  *                └──────┴──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┴──────┘
  */
 
     [_QWERTY] = LAYOUT(
       KC_GRV,         KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
-      LCTL_T(KC_ESC), KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      KC_LALT,        KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  KC_LGUI, OSL(_ADJUST),   OSL(_ADJUST), KC_LSFT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_EQL,
-        KC_SLEP, LT(_NUMNAV, KC_TAB), LT(_SYMBOLS, KC_SPC), MT(MOD_LSFT, KC_BSPC), MT(MOD_LCTL, KC_DEL), 
-                                                        KC_ENT, MT(MOD_RSFT, KC_SPC), LT(_NUMNAV, KC_TAB), LT(_SYMBOLS, KC_BSPC), KC_RGUI
+      RCTL_T(KC_ESC), KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+      KC_RALT,        KC_Z,   KC_X,   KC_C,   KC_V,   KC_B, KC_LGUI, KC_NO,   KC_NO, KC_LSFT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_EQL,
+        KC_SLEP, MT(MOD_RCTL, KC_TAB), LT(_SYMBOLS, KC_SPC), MT(MOD_LSFT, KC_BSPC), LT(_NAV, KC_DEL), 
+                                                        LT(_NAV, KC_ENT), MT(MOD_RSFT, KC_SPC), LT(_SYMBOLS, KC_BSPC), LT(_FUNC, KC_TAB), KC_RGUI
     ),
 
 
 /* ┌───────┬─────┬─────┬─────┬─────┬─────┐                          ┌─────┬─────┬─────┬─────┬─────┬─────┐
- * │       │     │ PgUp│ Up  │PgDn │     │       NumNav Layer       │  *  │  7  │  8  │  9  │  +  │ -(t)│
- * ├───────┼─────┼─────┼─────┼─────┼─────┤                          ├─────┼─────┼─────┼─────┼─────┼─────┤
- * │       │ Home│ Left│ Dwn │Right│ End │                          │  -  │  4  │  5  │  6  │  0  │ '(t)│
+ * │  `(t) │  !  │  @  │  #  │  $  │  %  │      Symbols/Numbers     │  ;  │  7  │  8  │  9  │  \  │  |  │
+ * ├───────┼─────┼─────┼─────┼─────┼─────┤           Layer          ├─────┼─────┼─────┼─────┼─────┼─────┤
+ * │       │  [  │  {  │  }  │  ]  │  ^  │                          │  -  │  4  │  5  │  6  │  +  │ '(t)│
  * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐  ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
- * │       │     │     │     │     │     │     │     │  │     │     │  /  │  1  │  2  │  3  │  .  │ =(t)│
+ * │       │  <  │  >  │  (  │  )  │  &  │     │     │  │     │     │  *  │  1  │  2  │  3  │  /  │ =(t)│
+ * └───────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤  ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴─────┘
+ *                │      │      │      │      │      │  │      │      │   0  │   .  │      │
+ *                │      │      │      │      │      │  │      │      │      │      │      │
+ *                └──────┴──────┴──────┴──────┴──────┘  └──────┴──────┴──────┴──────┴──────┘
+ */
+
+    [_SYMBOLS] = LAYOUT(
+      KC_TRNS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC,                                      KC_SCLN, KC_7, KC_8, KC_9, KC_BSLS, KC_PIPE,
+      KC_TRNS, KC_LBRC, KC_LCBR, KC_RCBR, KC_RBRC, KC_CIRC,                                     KC_MINS, KC_4, KC_5, KC_6, KC_PLUS, KC_TRNS,
+      KC_TRNS, KC_LABK, KC_RABK, KC_LPRN, KC_RPRN, KC_AMPR, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ASTR, KC_1, KC_2, KC_3, KC_SLSH, KC_TRNS,
+                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_0,    KC_DOT, KC_TRNS
+    ),
+
+
+/* ┌───────┬─────┬─────┬─────┬─────┬─────┐                          ┌─────┬─────┬─────┬─────┬─────┬─────┐
+ * │       │     │ Pg↑ │  ↑  │ Pg↓ │     │     Navigation Layer     │ Home│ Pg↓ │ Pg↑ │ End │     │ -(t)│
+ * ├───────┼─────┼─────┼─────┼─────┼─────┤                          ├─────┼─────┼─────┼─────┼─────┼─────┤
+ * │       │ Home│ <-- │  ↓  │ --> │ End │                          │ <-- │  ↓  │  ↑  │ --> │ End │ '(t)│
+ * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐  ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+ * │       │     │     │     │     │     │     │     │  │     │     │ Home│ Pg↓ │ Pg↑ │ Home│     │ =(t)│
  * └───────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤  ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴─────┘
  *                │      │      │      │      │      │  │      │      │      │      │      │
  *                │      │      │      │      │      │  │      │      │      │      │      │
  *                └──────┴──────┴──────┴──────┴──────┘  └──────┴──────┴──────┴──────┴──────┘
  */
 
-    [_NUMNAV] = LAYOUT(
-      KC_TRNS, KC_TRNS, KC_PGUP, KC_UP,   KC_PGDN, KC_TRNS,                                     KC_ASTR, KC_7, KC_8, KC_9, KC_PLUS, KC_TRNS,
-      KC_TRNS, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,                                      KC_MINS, KC_4, KC_5, KC_6, KC_0,    KC_TRNS,
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLSH, KC_1, KC_2, KC_3, KC_DOT,  KC_TRNS,
+    [_NAV] = LAYOUT(
+      KC_TRNS, KC_TRNS, KC_PGUP, KC_UP,   KC_PGDN, KC_TRNS,                                     KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,  KC_TRNS,
+      KC_TRNS, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,                                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_END, KC_TRNS,
+      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,  KC_TRNS,
                                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
-    ),
-
-
-/* ┌───────┬─────┬─────┬─────┬─────┬─────┐                          ┌─────┬─────┬─────┬─────┬─────┬───────┐
- * │       │  "  │  '  │  ;  │  :  │  ~  │       Symbols Layer      │  |  │  &  │  *  │  \  │  +  │  -(t) │
- * ├───────┼─────┼─────┼─────┼─────┼─────┤                          ├─────┼─────┼─────┼─────┼─────┼───────┤
- * │       │  [  │  {  │  }  │  ]  │  ?  │                          │  -  │  $  │  %  │  ^  │  ;  │  '(t) │
- * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐  ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼───────┤
- * │       │  <  │  >  │  (  │  )  │  `  │     │     │  │     │     │  _  │  !  │  @  │  #  │  /  │  =(t) │
- * └───────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤  ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴───────┘
- *                │      │      │      │      │      │  │      │      │      │      │      │
- *                │      │      │      │      │      │  │      │      │      │      │      │
- *                └──────┴──────┴──────┴──────┴──────┘  └──────┴──────┴──────┴──────┴──────┘
- */
-
-    [_SYMBOLS] = LAYOUT(
-      _______, KC_DQUO, KC_QUOT, KC_SCLN, KC_COLN, KC_TILD,                                     KC_PIPE, KC_AMPR, KC_ASTR, KC_BSLS, KC_PLUS, KC_TRNS,
-      _______, KC_LBRC, KC_LCBR, KC_RCBR, KC_RBRC, KC_QUES,                                     KC_MINS, KC_DLR,  KC_PERC, KC_CIRC, KC_SCLN, KC_TRNS,
-      _______, KC_LABK, KC_RABK, KC_LPRN, KC_RPRN, KC_GRV,  _______, _______, _______, _______, KC_UNDS, KC_EXLM, KC_AT,   KC_HASH, KC_SLSH, KC_TRNS,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, KC_DOT, _______
     ),
 
 
 /* ┌───────┬─────┬─────┬─────┬─────┬─────┐                          ┌─────┬─────┬─────┬─────┬─────┬─────┐
  * │       │     │     │     │     │     │      Function Layer      │     │ F7  │ F8  │ F9  │ F10 │     │
  * ├───────┼─────┼─────┼─────┼─────┼─────┤                          ├─────┼─────┼─────┼─────┼─────┼─────┤
- * │       │     │     │     │     │     │                          │     │ F4  │ F5  │ F6  │ F11 │     │
+ * │       │ *Tg │ *S+ │ *H+ │ *V+ │ *M+ │                          │     │ F4  │ F5  │ F6  │ F11 │     │
  * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐  ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
- * │       │     │     │     │     │     │     │     │  │     │     │     │ F1  │ F2  │ F3  │ F12 │     │
+ * │       │     │ *S- │ *H- │ *V- │ *M- │     │     │  │     │     │     │ F1  │ F2  │ F3  │ F12 │     │
  * └───────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤  ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴─────┘
  *                │      │      │      │      │      │  │      │      │      │      │      │
  *                │      │      │      │      │      │  │      │      │      │      │      │
  *                └──────┴──────┴──────┴──────┴──────┘  └──────┴──────┴──────┴──────┴──────┘
  */
 
-    [_ADJUST] = LAYOUT(
+    [_FUNC] = LAYOUT(
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                      KC_TRNS, KC_F7, KC_F8, KC_F9, KC_F10, KC_TRNS,
       KC_TRNS, RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD,                                      KC_TRNS, KC_F4, KC_F5, KC_F6, KC_F11, KC_TRNS,
       KC_TRNS, KC_TRNS, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F12, KC_TRNS,
@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 /* ┌───────┬─────┬─────┬─────┬─────┬─────┐                          ┌─────┬─────┬─────┬─────┬─────┬───────┐
- * │       │     │     │     │     │     │       Layer Temlate      │     │     │     │     │     │       │
+ * │       │     │     │     │     │     │      Layer Template      │     │     │     │     │     │       │
  * ├───────┼─────┼─────┼─────┼─────┼─────┤                          ├─────┼─────┼─────┼─────┼─────┼───────┤
  * │       │     │     │     │     │     │                          │     │     │     │     │     │       │
  * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐  ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼───────┤
@@ -214,15 +214,15 @@ static void render_status(void) {
         case _QWERTY:
             oled_write_P(PSTR("-                \n"), false);
             break;
-        case _NUMNAV:
-            oled_write_P(PSTR("Layer:  "), false);
-            oled_write_P(PSTR("NUM-NAV\n"), false);
-            break;
         case _SYMBOLS:
             oled_write_P(PSTR("Layer:  "), false);
             oled_write_P(PSTR("SYMBOLS\n"), false);
             break;
-        case _ADJUST:
+        case _NAV:
+            oled_write_P(PSTR("Layer:  "), false);
+            oled_write_P(PSTR("NAVIGATION\n"), false);
+            break;
+        case _FUNC:
             oled_write_P(PSTR("Layer:  "), false);
             oled_write_P(PSTR("Function\n"), false);
             break;
