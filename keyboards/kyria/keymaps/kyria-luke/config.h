@@ -32,7 +32,8 @@
   #define RGBLIGHT_SLEEP
   #define RGBLIGHT_SPLIT
   #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
-  #define RGBLIGHT_LED_MAP { 10, 11, 13, 12, 14, 17, 15, 16, 19, 1, 9, 8, 6, 7, 5, 2, 4, 3, 1, 0 }
+  // #define RGBLIGHT_LED_MAP { 10, 11, 13, 12, 14, 17, 15, 16, 19, 1, 9, 8, 6, 7, 5, 2, 4, 3, 1, 0 }
+  #define RBGLIGHT_LED_MAP {9,8,6,7,5,3,2,4,1,0,10,12,13,11,14,16,17,15,18,19}
 #endif
 
 // If you are using an Elite C rev3 on the slave side, uncomment the lines below:
@@ -44,7 +45,9 @@
 // every other tick, lower the resolution to 2.
 #define ENCODER_RESOLUTION 2
 
-#define TAPPING_TERM 175
+#define TAPPING_TERM 250
+#define TAPPING_FORCE_HOLD_PER_KEY
 
 #define ONESHOT_TAP_TOGGLE 2  /* Tapping this number of times holds the key until tapped once again. */
 
+#define COMBO_COUNT 1

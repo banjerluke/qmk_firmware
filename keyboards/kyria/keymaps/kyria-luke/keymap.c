@@ -47,19 +47,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT(
       KC_GRV,         KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
-      RCTL_T(KC_ESC), KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      KC_RALT,        KC_Z,   KC_X,   KC_C,   KC_V,   KC_B, KC_LGUI, KC_NO,   KC_NO, KC_LSFT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_EQL,
-        KC_SLEP, MT(MOD_RCTL, KC_TAB), LT(_SYMBOLS, KC_SPC), MT(MOD_LSFT, KC_BSPC), LT(_NAV, KC_DEL), 
-                                                        LT(_NAV, KC_ENT), MT(MOD_RSFT, KC_SPC), LT(_SYMBOLS, KC_BSPC), LT(_FUNC, KC_TAB), KC_RGUI
+      MT(MOD_RCTL, KC_TAB), KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                   KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, MT(MOD_RSFT, KC_QUOT),
+      KC_RALT,        KC_Z,   KC_X,   KC_C,   KC_V,   KC_B, KC_RGUI, KC_NO,   KC_NO, KC_LSFT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_EQL,
+        KC_SLEP, MT(MOD_RCTL, KC_ESC), KC_LSPO, LT(_SYMBOLS, KC_BSPC), LT(_NAV, KC_DEL), 
+                                                        LT(_NAV, KC_ENT), MT(MOD_RSFT, KC_SPC), KC_RSPC, LT(_FUNC, KC_TAB), KC_RGUI
     ),
 
 
 /* ┌───────┬─────┬─────┬─────┬─────┬─────┐                          ┌─────┬─────┬─────┬─────┬─────┬─────┐
- * │  `(t) │  !  │  @  │  #  │  $  │  %  │      Symbols/Numbers     │  ;  │  7  │  8  │  9  │  \  │  |  │
+ * │   ~   │  !  │  @  │  #  │  $  │  %  │      Symbols/Numbers     │  ;  │  7  │  8  │  9  │  :  │  _  │
  * ├───────┼─────┼─────┼─────┼─────┼─────┤           Layer          ├─────┼─────┼─────┼─────┼─────┼─────┤
- * │       │  [  │  {  │  }  │  ]  │  ^  │                          │  -  │  4  │  5  │  6  │  +  │ '(t)│
+ * │       │  [  │  ]  │  {  │  }  │  ^  │                          │  -  │  4  │  5  │  6  │  =  │  "  │
  * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐  ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
- * │       │  <  │  >  │  (  │  )  │  &  │     │     │  │     │     │  *  │  1  │  2  │  3  │  /  │ =(t)│
+ * │       │  \  │  |  │  <  │  >  │  &  │     │     │  │     │     │  *  │  1  │  2  │  3  │  /  │  +  │
  * └───────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤  ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴─────┘
  *                │      │      │      │      │      │  │      │      │   0  │   .  │      │
  *                │      │      │      │      │      │  │      │      │      │      │      │
@@ -67,19 +67,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
     [_SYMBOLS] = LAYOUT(
-      KC_TRNS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC,                                      KC_SCLN, KC_7, KC_8, KC_9, KC_BSLS, KC_PIPE,
-      KC_TRNS, KC_LBRC, KC_LCBR, KC_RCBR, KC_RBRC, KC_CIRC,                                     KC_MINS, KC_4, KC_5, KC_6, KC_PLUS, KC_TRNS,
-      KC_TRNS, KC_LABK, KC_RABK, KC_LPRN, KC_RPRN, KC_AMPR, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ASTR, KC_1, KC_2, KC_3, KC_SLSH, KC_TRNS,
+      KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC,                                      KC_SCLN, KC_7, KC_8,  KC_9, KC_COLN, KC_UNDS,
+      KC_TRNS, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_CIRC,                                     KC_MINS, KC_4, KC_5, KC_6, KC_EQL, KC_DQUO,
+      KC_TRNS, KC_BSLS, KC_PIPE, KC_LABK, KC_RABK, KC_AMPR, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ASTR, KC_1, KC_2, KC_3, KC_SLSH, KC_PLUS,
                                  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_0,    KC_DOT, KC_TRNS
     ),
 
+    // [_SYMBOLS] = LAYOUT(
+    //   KC_TRNS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR, KC_PERC,                                      KC_SCLN, KC_7, KC_8, KC_9, KC_BSLS, KC_PIPE,
+    //   KC_TRNS, KC_LBRC, KC_LCBR, KC_RCBR, KC_RBRC, KC_CIRC,                                     KC_MINS, KC_4, KC_5, KC_6, KC_PLUS, KC_TRNS,
+    //   KC_TRNS, KC_LABK, KC_RABK, KC_LPRN, KC_RPRN, KC_AMPR, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ASTR, KC_1, KC_2, KC_3, KC_SLSH, KC_TRNS,
+    //                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_0,    KC_DOT, KC_TRNS
+    // ),
+
 
 /* ┌───────┬─────┬─────┬─────┬─────┬─────┐                          ┌─────┬─────┬─────┬─────┬─────┬─────┐
- * │       │     │ Pg↑ │  ↑  │ Pg↓ │     │     Navigation Layer     │ Home│ Pg↓ │ Pg↑ │ End │     │ -(t)│
+ * │       │     │ Pg↑ │  ↑  │ Pg↓ │     │     Navigation Layer     │ ^<- │     │     │ ^-> │ ^<┘ │ Bksp│
  * ├───────┼─────┼─────┼─────┼─────┼─────┤                          ├─────┼─────┼─────┼─────┼─────┼─────┤
- * │       │ Home│ <-- │  ↓  │ --> │ End │                          │ <-- │  ↓  │  ↑  │ --> │ End │ '(t)│
+ * │       │ Home│ <-- │  ↓  │ --> │ End │                          │ <-- │  ↓  │  ↑  │ --> │ End │ ^Bk │
  * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐  ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
- * │       │     │     │     │     │     │     │     │  │     │     │ Home│ Pg↓ │ Pg↑ │ Home│     │ =(t)│
+ * │       │     │     │     │     │     │     │     │  │     │     │ Home│ Pg↓ │ Pg↑ │ Home│     │ Del │
  * └───────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤  ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴─────┘
  *                │      │      │      │      │      │  │      │      │      │      │      │
  *                │      │      │      │      │      │  │      │      │      │      │      │
@@ -87,10 +94,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
     [_NAV] = LAYOUT(
-      KC_TRNS, KC_TRNS, KC_PGUP, KC_UP,   KC_PGDN, KC_TRNS,                                     KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,  KC_TRNS,
-      KC_TRNS, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,                                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_END, KC_TRNS,
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,  KC_TRNS,
-                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+      KC_TRNS, KC_NO, KC_7, KC_8, KC_9, KC_TRNS,                                   RCTL(KC_LEFT), KC_NO, KC_NO,  RCTL(KC_RGHT), RCTL(KC_ENT),  RCTL(KC_BSPC),
+      KC_TRNS, KC_0, KC_4, KC_5, KC_6, KC_TRNS,                                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,    KC_ENT,   KC_BSPC,
+      KC_TRNS, KC_NO, KC_1, KC_2, KC_3, KC_DOT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END,     KC_NO,    KC_DEL,
+                                 KC_TRNS, KC_DOT, KC_0, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
 
@@ -149,6 +156,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // layer_state_t layer_state_set_user(layer_state_t state) {
 //     return update_tri_layer_state(state, _NAV, _SYMBOLS, _FUNC);
 // }
+
+enum combo_events {
+   DOUBLE_SHIFT
+};
+
+const uint16_t PROGMEM double_shift_combo[] = {KC_LSFT, KC_RSFT, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+  [DOUBLE_SHIFT] = COMBO_ACTION(double_shift_combo),
+};
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+  switch(combo_index) {
+    case DOUBLE_SHIFT:
+      if (pressed) {
+        layer_on(1);
+      } else {
+          layer_off(1);
+      }
+      break;
+  }
+}
+
+bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MT(MOD_RSFT, KC_SPC):
+            return true;
+        default:
+            return false;
+    }
+}
 
 const rgblight_segment_t PROGMEM symbols_layer[] = RGBLIGHT_LAYER_SEGMENTS(
     {0, 2, HSV_GOLD},
