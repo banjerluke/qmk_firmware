@@ -44,10 +44,13 @@
 // When using the default resolution of 4, if you notice your encoder skipping
 // every other tick, lower the resolution to 2.
 #define ENCODER_RESOLUTION 2
+#define ENCODER_DIRECTION_FLIP
 
-#define TAPPING_TERM 250
+#define TAPPING_TERM 200
+#define PERMISSIVE_HOLD_PER_KEY
 #define TAPPING_FORCE_HOLD_PER_KEY
 
-#define ONESHOT_TAP_TOGGLE 2  /* Tapping this number of times holds the key until tapped once again. */
+#define ONESHOT_TAP_TOGGLE 3  /* Tapping this number of times holds the key until tapped once again. */
 
 #define COMBO_COUNT 1
+#define COMBO_TERM 40
