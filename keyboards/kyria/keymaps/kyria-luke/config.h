@@ -23,7 +23,7 @@
 #ifdef RGBLIGHT_ENABLE
   #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
   #define RGBLIGHT_EFFECT_TWINKLE
-  #define RGBLIGHT_EFFECT_KNIGHT
+  // #define RGBLIGHT_EFFECT_KNIGHT
   #define RGBLIGHT_HUE_STEP 16
   #define RGBLIGHT_SAT_STEP 16
   #define RGBLIGHT_VAL_STEP 16
@@ -52,5 +52,6 @@
 
 #define ONESHOT_TAP_TOGGLE 3  /* Tapping this number of times holds the key until tapped once again. */
 
-#define COMBO_COUNT 1
-#define COMBO_TERM 40
+#define COMBO_TERM 50
+#define COMBO_TERM_PER_COMBO
+// #define COMBO_COUNT 52
