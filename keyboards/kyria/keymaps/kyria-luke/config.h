@@ -52,6 +52,6 @@
 
 #define ONESHOT_TAP_TOGGLE 3  /* Tapping this number of times holds the key until tapped once again. */
 
-#define COMBO_TERM 50
+#define COMBO_TERM 60
 #define COMBO_TERM_PER_COMBO
 // #define COMBO_COUNT 52

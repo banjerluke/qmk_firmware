@@ -65,38 +65,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├────────┼─────┼─────┼─────┼─────┼─────┤                           ├─────┼─────┼─────┼─────┼─────┼───────┤
  * │Bksp/Nav│  A  │  S  │  D  │  F  │  G  │                           │  H  │  J  │  K  │  L  │ ;Num│  ' "  │
  * ├────────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐   ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼───────┤
- * │  Alt   │  Z  │  X  │  C  │  V  │  B  │ Win │ OSW │   │ RGB │     │  N  │  M  │ , < │ . > │ / ? │  - _  │
+ * │  Alt   │  Z  │  X  │  C  │  V  │  B  │ Win │ OSW │   │ RGB │     │  N  │  M  │ , < │ . > │ / ? │  = +  │
  * └────────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤   ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴───────┘
- *                 │ A-Tb │ Ctrl │ Shft │ Num  │ Func │   │ Nav  │ Space│ Shft │ Ctrl │ Zzz  │
+ *                 │ A-Tb │ Ctrl │ Shft │ Symb │ Num  │   │ Nav  │ Space│ Shft │ Ctrl │ Zzz  │
  *                 │      │      │      │      │      │   │      │      │      │      │      │
  *                 └──────┴──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┴──────┘
  */
 
   [_QWERTY] = LAYOUT(
-    KC_GRV,            KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                                KC_Y,  KC_U,  KC_I,    KC_O,   KC_P,                  KC_MINS,
-    LT(_NAV, KC_BSPC), KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                                KC_H,  KC_J,  KC_K,    KC_L,   LT(_NUMBERS, KC_SCLN), KC_QUOT,
-    KC_RALT,           KC_Z,   KC_X,   KC_C,   KC_V,   KC_B, KC_RGUI, OSM(MOD_RGUI), /**/ MO(_RGB), KC_LSFT, KC_N,  KC_M,  KC_COMM, KC_DOT, KC_SLSH,               KC_MINS,
-        RALT(KC_TAB), KC_RCTL, KC_LSFT, MO(_NUMBERS), MO(_FUNC), /**/ MO(_NAV), KC_SPC, KC_RSFT, KC_RCTL, KC_SLEP
+    KC_GRV,            KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                                KC_Y,  KC_U,  KC_I,    KC_O,   LT(_NUMBERS, KC_P),   KC_MINS,
+    MT(MOD_LCTL, KC_BSPC), KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                                KC_H,  KC_J,  KC_K,    KC_L,   LT(_NUMBERS, KC_SCLN), KC_QUOT,
+    KC_RALT,           KC_Z,   KC_X,   KC_C,   KC_V,   KC_B, KC_LGUI, OSM(MOD_LGUI), /**/ MO(_RGB), RCTL(KC_LGUI), KC_N,  KC_M,  KC_COMM, KC_DOT, LT(_NUMBERS, KC_SLSH),  KC_EQL,
+        RALT(KC_TAB), MO(_FUNC), KC_LSFT, KC_RCTL, MO(_NUMBERS), /**/ MO(_NAV), KC_SPC, KC_RSFT, KC_RCTL, KC_SLEP
   ),
 
 
 /* ┌───────┬─────┬─────┬─────┬─────┬─────┐                           ┌─────┬─────┬─────┬─────┬─────┬─────┐
- * │   ~   │  !  │  @  │  #  │  $  │  %  │          Symbols          │  ^  │  &  │  *  │     │  -  │  _  │
+ * │   ~   │  !  │  @  │  #  │  $  │  %  │          Symbols          │  ^  │  &  │  *  │  (  │  )  │  _  │
  * ├───────┼─────┼─────┼─────┼─────┼─────┤                           ├─────┼─────┼─────┼─────┼─────┼─────┤
  * │       │  {  │  }  │  (  │  )  │  \  │                           │  -  │  =  │  ;  │  '  │  :  │  "  │
  * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐   ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
- * │       │  <  │  >  │  [  │  ]  │  |  │     │     │   │     │     │  /  │  +  │  ,  │  .  │  ?  │  _  │
+ * │       │  <  │  >  │  [  │  ]  │  |  │     │     │   │     │     │  /  │  +  │  ,  │  .  │  ?  │  +  │
  * └───────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤   ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴─────┘
- *                │      │      │      │      │      │   │      │      │      │  . , │      │
  *                │      │      │      │      │      │   │      │      │      │      │      │
  *                └──────┴──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┴──────┘
  */
 
   [_SYMBOLS] = LAYOUT(
-    KC_TILD,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                                     KC_CIRC, KC_AMPR, KC_ASTR, KC_NO,   KC_MINS, KC_UNDS,
+    KC_TILD,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                                     KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
     KC_TRNS,  KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN, KC_BSLS,                                     KC_MINS, KC_EQL,  KC_SCLN, KC_QUOT, KC_COLN, KC_DQUO, 
-    KC_TRNS,  KC_LABK, KC_RABK, KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLSH, KC_PLUS, KC_COMM, KC_DOT,  KC_QUES, KC_UNDS,
-                                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TD(DOT_COMM), KC_TRNS
+    KC_TRNS,  KC_LABK, KC_RABK, KC_LCBR, KC_RCBR, KC_PIPE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLSH, KC_PLUS, KC_COMM, KC_DOT,  KC_QUES, KC_PLUS,
+                                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
   ),
 
 /* ┌───────┬─────┬─────┬─────┬─────┬─────┐                           ┌─────┬─────┬─────┬─────┬─────┬─────┐
@@ -106,8 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ├───────┼─────┼─────┼─────┼─────┼─────┼─────┬─────┐   ┌─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
  * │       │  =  │  1  │  2  │  3  │  =  │     │     │   │     │     │  =  │  1  │  2  │  3  │ / ? │ _ - │
  * └───────┴─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┤   ├─────┴┬────┴─┬───┴──┬──┴───┬─┴────┬┴─────┴─────┘
- *                │      │  . , │   0  │  __  │      │   │      │      │   0  │  . , │      │
- *                │      │      │      │      │      │   │      │      │      │      │      │
+ *                │      │      │      │      │      │   │      │      │   0  │  . , │      │
  *                └──────┴──────┴──────┴──────┴──────┘   └──────┴──────┴──────┴──────┴──────┘
  */
 
@@ -115,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS, KC_PLUS, KC_7, KC_8, KC_9, KC_PLUS,                                       KC_PLUS,   KC_7, KC_8, KC_9, KC_PLUS, KC_TRNS,
     KC_TRNS, KC_0,    KC_4, KC_5, KC_6, KC_MINS,                                       KC_MINS,   KC_4, KC_5, KC_6, KC_EQL,  KC_EQL,
     KC_TRNS, KC_EQL,  KC_1, KC_2, KC_3, KC_EQL, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_EQL,    KC_1, KC_2, KC_3, KC_SLSH, KC_SLSH,
-                   KC_TRNS, TD(DOT_COMM), KC_0, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_0, TD(DOT_COMM), KC_TRNS
+                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_0, TD(DOT_COMM), KC_TRNS
   ),
 
 
@@ -135,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAV] = LAYOUT( 
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                           KC_HOME, KC_PGDN, KC_PGUP, KC_END,  RCTL(KC_BSPC), RCTL(KC_ENT),
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                           KC_LEFT, KC_DOWN,  KC_UP,  KC_RGHT, KC_BSPC,  KC_ENT,
-      KC_TRNS, KC_RALT, KC_RSFT, KC_RCTL, KC_RGUI, OSM(MOD_RGUI), KC_TRNS, KC_SPC,   KC_TRNS, KC_APP, KC_APP, RCTL(KC_BSPC), RCTL(KC_LEFT), RCTL(KC_RGHT), RCTL(KC_DEL), KC_DEL, 
+      KC_TRNS, KC_RALT, KC_RSFT, KC_RCTL, KC_RGUI, OSM(MOD_RGUI), KC_TRNS, KC_SPC,   KC_TRNS, KC_APP, KC_APP, RCTL(KC_LEFT), RCTL(KC_LEFT), RCTL(KC_RGHT), RCTL(KC_DEL), KC_DEL, 
                                       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
@@ -176,9 +174,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
     [_RGB] = LAYOUT(
-      KC_TRNS, RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD,                                      KC_TRNS, KC_F7, KC_F8, KC_F9, KC_F10, KC_TRNS,
-      KC_TRNS, KC_TRNS, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD,                                     KC_TRNS, KC_F4, KC_F5, KC_F6, KC_F11, KC_TRNS,
-      KC_TRNS, KC_RALT, KC_RSFT, KC_RCTL, KC_RWIN, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_F1, KC_F2, KC_F3, KC_F12, KC_TRNS,
+      KC_TRNS, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_MOD,                                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+      KC_TRNS, KC_TRNS, RGB_HUD, RGB_SAD, RGB_VAD, RGB_RMOD,                                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+      RCTL(RGUI(KC_SLSH)), RCTL(RGUI(KC_PGDN)), RCTL(RGUI(KC_PGUP)), RCTL(RSFT(RALT(KC_F8))), RCTL(RSFT(RALT(KC_F9))), KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
@@ -215,11 +213,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     ),
 };
 
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//     return update_tri_layer_state(state, _NAV, _SYMBOLS, _FUNC);
-// }
-
-const uint16_t PROGMEM double_shift_combo[] = {KC_LSFT, KC_RSFT, COMBO_END};
 const uint16_t PROGMEM coma_dot_1_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 const uint16_t PROGMEM coma_dot_2_combo[] = {KC_2, KC_3, COMBO_END};
 const uint16_t PROGMEM d_f_1_combo[] = {KC_D, KC_F, COMBO_END};
@@ -274,7 +267,6 @@ const uint16_t PROGMEM z_s_1_combo[] = {KC_Z, KC_S, COMBO_END};
 
 
 enum combo_events {
-  DOUBLE_SHIFT,
   COMBO_coma_dot_1,
   COMBO_coma_dot_2,
   COMBO_d_f_1,
@@ -331,7 +323,6 @@ enum combo_events {
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
 combo_t key_combos[] = {
-  [DOUBLE_SHIFT] = COMBO_ACTION(double_shift_combo),
   [COMBO_coma_dot_1] = COMBO_ACTION(coma_dot_1_combo),
   [COMBO_coma_dot_2] = COMBO_ACTION(coma_dot_2_combo),
   [COMBO_d_f_1] = COMBO(d_f_1_combo, KC_TAB),
@@ -386,14 +377,7 @@ combo_t key_combos[] = {
 };
 
 void process_combo_event(uint16_t combo_index, bool p) {
-  switch(combo_index) {
-    case DOUBLE_SHIFT:
-      if (p) {
-        layer_on(_SYMBOLS);
-      } else {
-        layer_off(_SYMBOLS);
-      }
-      break;
+  switch(combo_index) { 
     case COMBO_coma_dot_1: if (p) {SEND_STRING(SS_DOWN(X_RCTL)SS_DOWN(X_RGHT));} else {SEND_STRING(SS_UP(X_RGHT)SS_UP(X_RCTL));} break;
     case COMBO_coma_dot_2: if (p) {SEND_STRING(SS_DOWN(X_RCTL)SS_DOWN(X_RGHT));} else {SEND_STRING(SS_UP(X_RGHT)SS_UP(X_RCTL));} break;
     case COMBO_d_v_1: if (p) {tap_code16(RSFT(KC_INS));}  break;
@@ -403,32 +387,34 @@ void process_combo_event(uint16_t combo_index, bool p) {
     case COMBO_f_c_2: if (p) {tap_code16(RCTL(KC_INS));}  break;
     case COMBO_f_c_a_1: if (p) {SEND_STRING(SS_RCTL("ac"));}  break;
     case COMBO_f_c_a_2: if (p) {SEND_STRING(SS_RCTL("ac"));}  break;
-    case COMBO_j_k_l_1: if (p) {SEND_STRING(SS_DOWN(X_RCTL)SS_DOWN(X_DEL));} else {SEND_STRING(SS_UP(X_DEL)SS_UP(X_RCTL));} break;
-    case COMBO_j_k_l_2: if (p) {SEND_STRING(SS_DOWN(X_RCTL)SS_DOWN(X_DEL));} else {SEND_STRING(SS_UP(X_DEL)SS_UP(X_RCTL));} break;
+    case COMBO_j_k_l_1: if (p) {tap_code16(RCTL(KC_BSPC));} break;
+    case COMBO_j_k_l_2: if (p) {tap_code16(RCTL(KC_BSPC));} break;
     case COMBO_m_coma_1: if (p) {SEND_STRING(SS_DOWN(X_RCTL)SS_DOWN(X_LEFT));} else {SEND_STRING(SS_UP(X_LEFT)SS_UP(X_RCTL));} break;
     case COMBO_m_coma_2: if (p) {SEND_STRING(SS_DOWN(X_RCTL)SS_DOWN(X_LEFT));} else {SEND_STRING(SS_UP(X_LEFT)SS_UP(X_RCTL));} break;
-    case COMBO_s_d_f_1: if (p) {SEND_STRING(SS_DOWN(X_RCTL)SS_DOWN(X_DEL));} else {SEND_STRING(SS_UP(X_DEL)SS_UP(X_RCTL));} break;
-    case COMBO_s_d_f_2: if (p) {SEND_STRING(SS_DOWN(X_RCTL)SS_DOWN(X_DEL));} else {SEND_STRING(SS_UP(X_DEL)SS_UP(X_RCTL));} break;
+    case COMBO_s_d_f_1: if (p) {tap_code16(RCTL(KC_BSPC));} break;
+    case COMBO_s_d_f_2: if (p) {tap_code16(RCTL(KC_BSPC));} break;
     case COMBO_s_v_1: if (p) {SEND_STRING(SS_RCTL("s"));}  break;
     case COMBO_x_d_1: if (p) {tap_code16(RSFT(KC_DEL));}  break;
     case COMBO_x_d_a_1: if (p) {SEND_STRING(SS_RCTL("ax"));}  break;
-    case COMBO_x_d_f_1: if (p) {SEND_STRING(SS_DOWN(X_RCTL)SS_DOWN(X_BSPC));} else {SEND_STRING(SS_UP(X_BSPC)SS_UP(X_RCTL));} break;
+    case COMBO_x_d_f_1: if (p) {tap_code16(RCTL(KC_DEL));} break;
     case COMBO_x_f_a_1: if (p) {SEND_STRING(SS_RCTL("a")SS_TAP(X_DEL));}  break;
     case COMBO_z_s_1: if (p) {SEND_STRING(SS_RCTL("z"));}  break;
   }
 }
 
-uint16_t get_combo_term(uint16_t index, combo_t *combo) {
-    switch (index) {
-        case DOUBLE_SHIFT:
-            return 2000;
-    }
-    return COMBO_TERM;
-}
+// uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+//     switch (index) {
+//         case DOUBLE_SHIFT:
+//             return 150;
+//     }
+//     return COMBO_TERM;
+// }
 
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(_NAV, KC_BSPC):
+            return true;
+        case MT(MOD_LCTL, KC_BSPC):
             return true;
         default:
             return false;
@@ -438,6 +424,8 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(_NAV, KC_BSPC):
+            return true;
+        case MT(MOD_LCTL, KC_BSPC):
             return true;
         default:
             return false;
@@ -461,6 +449,35 @@ uint8_t cur_dance(qk_tap_dance_state_t *state) {
       else return TRIPLE_HOLD;
   } else return 8; // Magic number. At some point this method will expand to work for more presses
 }
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static bool shift_to_reregister;
+    uint16_t other_shift;
+    switch (keycode) {
+    case KC_LSFT:
+    case KC_RSFT:
+        other_shift = keycode == KC_LSFT ? KC_RSFT : KC_LSFT;
+        if (record->event.pressed) {
+            if ( get_mods() & MOD_BIT(other_shift) ) {
+                unregister_mods(MOD_BIT(other_shift));
+                shift_to_reregister = other_shift;
+                layer_on(_SYMBOLS);
+                return false;
+            }
+        } else {
+            unregister_mods(MOD_BIT(KC_LSFT));
+            unregister_mods(MOD_BIT(KC_RSFT));
+            if (shift_to_reregister) {
+                layer_off(_SYMBOLS);
+                register_mods(MOD_BIT(shift_to_reregister));
+                shift_to_reregister = NULL;
+                return false;
+            }
+        }
+        return true;
+    }
+    return true;
+};
 
 // Handle the possible states for each tapdance keycode you define:
 
@@ -504,25 +521,25 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 
 
 const rgblight_segment_t PROGMEM symbols_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 19, HSV_GOLD}
-);
-
-const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 19, HSV_MAGENTA}
+    {0, 20, HSV_GOLD}
 );
 
 const rgblight_segment_t PROGMEM numbers_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 19, HSV_GREEN}
+    {0, 20, HSV_GREEN}
+);
+
+const rgblight_segment_t PROGMEM nav_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 20, HSV_MAGENTA}
 );
 
 const rgblight_segment_t PROGMEM func_layer[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 19, HSV_RED}
+    {0, 20, HSV_RED}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
     symbols_layer,
-    nav_layer,
     numbers_layer,
+    nav_layer,
     func_layer
 );
 
@@ -533,6 +550,8 @@ void keyboard_post_init_user(void) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     // Both layers will light up if both kb layers are active
+    // state = update_tri_layer_state(state, _NUMBERS, _SYMBOLS, _FUNC);
+    state = update_tri_layer_state(state, _NUMBERS, _NAV, _RGB);
     rgblight_set_layer_state(0, layer_state_cmp(state, 1));
     rgblight_set_layer_state(1, layer_state_cmp(state, 2));
     rgblight_set_layer_state(2, layer_state_cmp(state, 3));
@@ -592,27 +611,16 @@ void oled_task_user(void) {
 #ifdef ENCODER_ENABLE
 
 void encoder_update_user(uint8_t index, bool clockwise) {
-    // clockwise is reversed for some reason; keep that in mind
     if (index == 0) {
         if (clockwise) {
-            tap_code16(KC_TAB);
+            tap_code16(RCTL(RSFT(KC_Z)));
+            // tap_code16(RCTL(RSFT(RALT(KC_F8)));
         } else {
-            tap_code16(S(KC_TAB));
+            tap_code16(RCTL(KC_Z));
+            // tap_code16(RCTL(RSFT(RALT(KC_F9)));
         }
     }
     else if (index == 1) {
-        // // Switch between windows on Windows with alt tab.
-        // if (clockwise) {
-        //     if (!is_alt_tab_active) {
-        //         is_alt_tab_active = true;
-        //         register_code(KC_LALT);
-        //     } 
-        //     alt_tab_timer = timer_read();
-        //     tap_code16(KC_TAB);
-        // } else {
-        //     tap_code16(S(KC_TAB));
-        // }
-        // Switch between windows on Windows with alt tab.
         if (clockwise) {
             tap_code16(KC_WH_D);
         } else {
