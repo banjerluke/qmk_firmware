@@ -227,8 +227,6 @@ const uint16_t PROGMEM f_c_a_1_combo[] = {KC_F, KC_C, KC_A, COMBO_END};
 const uint16_t PROGMEM f_c_a_2_combo[] = {KC_RPRN, KC_RBRC, KC_LBRC, COMBO_END};
 const uint16_t PROGMEM f_g_1_combo[] = {KC_F, KC_G, COMBO_END};
 const uint16_t PROGMEM f_g_2_combo[] = {KC_RPRN, KC_TILD, COMBO_END};
-const uint16_t PROGMEM j_k_1_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM j_k_2_combo[] = {KC_4, KC_5, COMBO_END};
 const uint16_t PROGMEM j_k_l_1_combo[] = {KC_J, KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM j_k_l_2_combo[] = {KC_4, KC_5, KC_6, COMBO_END};
 const uint16_t PROGMEM j_l_1_combo[] = {KC_J, KC_L, COMBO_END};
@@ -281,8 +279,6 @@ enum combo_events {
   COMBO_f_c_a_2,
   COMBO_f_g_1,
   COMBO_f_g_2,
-  COMBO_j_k_1,
-  COMBO_j_k_2,
   COMBO_j_k_l_1,
   COMBO_j_k_l_2,
   COMBO_j_l_1,
@@ -337,8 +333,6 @@ combo_t key_combos[] = {
   [COMBO_f_c_a_2] = COMBO_ACTION(f_c_a_2_combo),
   [COMBO_f_g_1] = COMBO(f_g_1_combo, KC_SPC),
   [COMBO_f_g_2] = COMBO(f_g_2_combo, KC_SPC),
-  [COMBO_j_k_1] = COMBO(j_k_1_combo, KC_ESC),
-  [COMBO_j_k_2] = COMBO(j_k_2_combo, KC_ESC),
   [COMBO_j_k_l_1] = COMBO_ACTION(j_k_l_1_combo),
   [COMBO_j_k_l_2] = COMBO_ACTION(j_k_l_2_combo),
   [COMBO_j_l_1] = COMBO(j_l_1_combo, KC_BSPC),
